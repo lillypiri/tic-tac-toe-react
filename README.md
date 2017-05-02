@@ -1,6 +1,8 @@
 This project is following along with Tutorial: Intro To React to build a tic-tac-toe game.
 Find it at https://facebook.github.io/react/tutorial/tutorial.html
 
+I added in CSS animations after.
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
