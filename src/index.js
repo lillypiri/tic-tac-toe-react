@@ -6,7 +6,11 @@ import './index.css';
 function Square(props) {
   return (
     <button className="square" onClick={() => props.onClick()}>
-      {props.value}
+      {props.value &&
+          <div className="square-content">
+              {props.value}
+          </div>
+      }
     </button>
   );
 }
@@ -61,7 +65,7 @@ class Game extends React.Component {
         }
 
         squares[i] = this.state.xIsNext ? 'X' : 'O';
-        
+
         this.setState({
             history: history.concat([{
                 squares: squares
