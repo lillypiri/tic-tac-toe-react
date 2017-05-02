@@ -11,6 +11,9 @@ body {
   min-height: 100vh;
 }
 
+a {
+    color: white;
+}
 @-webkit-keyframes AnimationName {
     0%{background-position:25% 0%}
     50%{background-position:76% 100%}
@@ -83,6 +86,11 @@ ol, ul {
     }
 }
 
+.gh-link {
+    padding-top: 100px;
+    width: 100%;
+}
+
 .kbd-navigation .square:focus {
   background: #ddd;
 }
@@ -90,6 +98,7 @@ ol, ul {
 .game {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .game-info {
