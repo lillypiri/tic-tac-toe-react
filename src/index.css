@@ -1,5 +1,5 @@
 body {
-  font: 14px "Century Gothic", Futura, sans-serif;
+  font: 16px "Century Gothic", Futura, sans-serif;
   margin: 20px;
   padding-top: 150px;
   padding-left: 40%;
@@ -43,6 +43,7 @@ ol, ul {
 
 .status {
   margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .square {
