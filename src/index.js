@@ -118,9 +118,6 @@ class Game extends React.Component {
           <div className="status">{status}</div>
           <ol>{moves}</ol>
         </div>
-        <div className="gh-link">
-            <a href="https://github.com/lillypiri/tic-tac-toe">View the code @lillypiri on Github.</a>
-        </div>
       </div>
     );
   }

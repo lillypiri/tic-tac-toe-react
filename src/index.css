@@ -13,7 +13,7 @@ body {
 @media only screen and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
     body {
         padding-left: 0;
-        padding-top: 10px;
+        padding-top: 90px;
     }
 }
 
@@ -98,14 +98,6 @@ ol, ul {
         transform: scale(1);
         opacity: 1;
     }
-}
-
-.gh-link {
-    width: 100%;
-    position: fixed;
-    bottom: 50px;
-    left: 0px;
-    text-align: center;
 }
 
 .kbd-navigation .square:focus {
