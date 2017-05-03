@@ -79,6 +79,9 @@ class Game extends React.Component {
     jumpTo(step) {
       this.setState({
         stepNumber: step,
+        history: step === 0 ? [{
+            squares: Array(9).fill(null)
+        }] : history,
         xIsNext: (step % 2) ? false : true,
       });
     }
@@ -98,7 +101,7 @@ class Game extends React.Component {
       const moves = history.map((step, move) => {
           const desc = move ?
             'Move #' + move :
-            'Game start';
+            'Reset Game';
           return (
              <li key={move}>
                 <a href="#" onClick={() => this.jumpTo(move)}>{desc}</a>
