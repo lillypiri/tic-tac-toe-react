@@ -5,7 +5,7 @@ import './index.css';
 
 function Square(props) {
   return (
-    <button className="square" onClick={() => props.onClick()}>
+    <button className={`square ${props.isWinner ? "winner" : ""}`} onClick={() => props.onClick()}>
       {props.value &&
           <div className="square-content">
               {props.value}
@@ -19,7 +19,8 @@ function Square(props) {
 class Board extends React.Component {
     renderSquare(i) {
         const squares = this.props.squares;
-        return <Square value={squares[i]} onClick={() => this.props.onClick(i)} />;
+        const winning_squares = calculateWinningSquares(squares);
+        return <Square value={squares[i]} onClick={() => this.props.onClick(i)} isWinner={winning_squares && winning_squares.indexOf(i) > -1} />;
     }
 
   render() {
@@ -133,7 +134,7 @@ ReactDOM.render(
 );
 
 
-function calculateWinner(squares) {
+function calculateWinningSquares(squares) {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -147,8 +148,16 @@ function calculateWinner(squares) {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+      return lines[i];
     }
   }
   return null;
+}
+
+function calculateWinner(squares) {
+    let winning_squares = calculateWinningSquares(squares);
+    if (winning_squares == null) {
+        return null;
+    }
+    return squares[winning_squares[0]];
 }
