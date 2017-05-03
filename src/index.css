@@ -11,6 +11,13 @@ body {
   min-height: 100vh;
 }
 
+@media only screen and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+    body {
+        padding-left: 0;
+        padding-top: 10px;
+    }
+}
+
 a {
     color: white;
 }
@@ -110,6 +117,7 @@ ol, ul {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .game-info {
@@ -122,4 +130,5 @@ ol, ul {
 
 .board {
     box-shadow: 0 4px 20px black;
+    margin-bottom: 30px;
 }

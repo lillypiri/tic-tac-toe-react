@@ -119,7 +119,7 @@ class Game extends React.Component {
           <ol>{moves}</ol>
         </div>
         <div className="gh-link">
-            <a href="https://github.com/lillypiri/tic-tac-toe">View the code on Github.</a>
+            <a href="https://github.com/lillypiri/tic-tac-toe">View the code @lillypiri on Github.</a>
         </div>
       </div>
     );
