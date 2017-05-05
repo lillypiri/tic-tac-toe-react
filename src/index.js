@@ -49,6 +49,9 @@ class Board extends React.Component {
 class Game extends React.Component {
     constructor() {
         super();
+
+        this.handleClick = this.handleClick.bind(this);
+        this.botMove = this.botMove.bind(this);
         this.state = {
             history: [{
               squares: Array(9).fill(null)
@@ -58,12 +61,43 @@ class Game extends React.Component {
         };
     }
     handleClick(i) {
+
+        if (this.state.xIsNext === false) return;
         const history = this.state.history.slice(0, this.state.stepNumber + 1);
         const current = history[history.length - 1];
         const squares = current.squares.slice();
         if (calculateWinner(squares) || squares[i]) {
             return;
         }
+
+        squares[i] = this.state.xIsNext ? 'X' : 'O';
+
+        this.setState({
+            history: history.concat([{
+                squares: squares
+            }]),
+            stepNumber: history.length,
+            xIsNext: !this.state.xIsNext,
+        });
+        setTimeout(() => {
+            this.botMove();
+        }, 500);
+    }
+
+    botMove() {
+        const history = this.state.history.slice(0, this.state.stepNumber + 1);
+        const current = history[history.length - 1];
+        const squares = current.squares.slice();
+        if (calculateWinner(squares)) {
+            return;
+        }
+
+
+        let i = Math.floor(Math.random()*squares.length);
+        while(squares[i] !== null) {
+            i = Math.floor(Math.random()*squares.length);
+        }
+
 
         squares[i] = this.state.xIsNext ? 'X' : 'O';
 
@@ -98,16 +132,16 @@ class Game extends React.Component {
           status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
       }
 
-      const moves = history.map((step, move) => {
-          const desc = move ?
-            'Move #' + move :
-            'Reset Game';
-          return (
-             <li key={move}>
-                <a href="#" onClick={() => this.jumpTo(move)}>{desc}</a>
-             </li>
-         );
-     });
+    //   const moves = history.map((step, move) => {
+    //       const desc = move ?
+    //         'Move #' + move :
+    //         'Reset Game';
+    //       return (
+    //          <li key={move}>
+    //             <a href="#" onClick={() => this.jumpTo(move)}>{desc}</a>
+    //          </li>
+    //      );
+    //  });
 
     return (
       <div className="game">
@@ -119,7 +153,7 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div className="status">{status}</div>
-          <ol>{moves}</ol>
+          <a href="#" onClick={() => this.jumpTo(0)}>Reset Game</a>
         </div>
       </div>
     );
